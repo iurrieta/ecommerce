@@ -19,7 +19,7 @@ class ShoppingCartProvider extends ServiceProvider
             $shopping_cart = ShoppingCart::findOrCreateBySessionID($shopping_cart_id);
             \Session::put("shopping_cart_id", $shopping_cart->id);
 
-            $view->with("shopping_cart", $shopping_cart);
+            $view->with("productsCount", $shopping_cart->productsSize());
         });
     }
 

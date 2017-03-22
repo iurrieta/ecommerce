@@ -8,13 +8,32 @@ class ShoppingCart extends Model
 {
     protected $fillable = ["status"];
 
+    public function inShoppingCarts()
+    {
+        return $this->hasMany("App\InShoppingCart");
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany("App\Product", "in_shopping_carts");
+    }
+    
     /**
      * Cantidad de productos
      * @return int
      */
     public function productsSize()
     {
-        return $this->id;
+        return $this->products()->count();
+    }
+
+    /**
+     * Suma del total de productos del carrito
+     * @return mixed
+     */
+    public function total()
+    {
+        return $this->products()->sum("pricing");
     }
 
     /**

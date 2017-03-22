@@ -12,6 +12,7 @@
 */
 
 Route::get('/', "MainController@home");
+Route::get('/carrito', "ShoppingCartsController@index");
 
 Auth::routes();
 
@@ -19,3 +20,8 @@ Route::get('/home', 'HomeController@index');
 
 // Products resource
 Route::resource("products", "ProductsController");
+
+// In shopping carts resource
+Route::resource("in_shopping_carts", "InShoppingCartsController", [
+    "only" => ["store", "destroy"]
+]);
