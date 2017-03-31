@@ -37,6 +37,15 @@ class ShoppingCart extends Model
     }
 
     /**
+     * Total in USD
+     * @return float|int
+     */
+    public function totalUSD()
+    {
+        return $this->products()->sum("pricing") / 100;
+    }
+
+    /**
      * Find session or create one
      * @param $shopping_cart_id
      * @return ShoppingCart|mixed

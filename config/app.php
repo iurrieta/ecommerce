@@ -169,6 +169,7 @@ return [
 
         Collective\Html\HtmlServiceProvider::class,
         App\Providers\ShoppingCartProvider::class,
+        Anouar\Paypalpayment\PaypalpaymentServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -228,6 +229,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'PaypalPayment' => Anouar\Paypalpayment\Facades\PaypalPayment::class,
 
     ],
 
