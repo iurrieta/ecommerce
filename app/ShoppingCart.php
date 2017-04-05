@@ -8,11 +8,49 @@ class ShoppingCart extends Model
 {
     protected $fillable = ["status"];
 
+    public function approve()
+    {
+        $this->updateCustomIDAndStatus();
+    }
+
+    /**
+     * generateCustomID
+     * @return string
+     */
+    public function generateCustomID()
+    {
+        return md5("$this->id $this->updated_at");
+    }
+
+    /**
+     * updateCustomIDAndStatus
+     */
+    public function updateCustomIDAndStatus()
+    {
+        $this->status = "approved";
+        $this->customid = $this->generateCustomID();
+        $this->save();
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function inShoppingCarts()
     {
         return $this->hasMany("App\InShoppingCart");
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function order()
+    {
+        return $this->hasOne("App\Order")->first();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function products()
     {
         return $this->belongsToMany("App\Product", "in_shopping_carts");

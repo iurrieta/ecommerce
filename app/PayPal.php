@@ -120,6 +120,6 @@ class PayPal
         $payment = \PaypalPayment::getById($paymentId, $this->_apiContext);
         $excecution = \PaypalPayment::PaymentExecution()->setPayerId($payerId);
 
-        dd($payment->execute($excecution, $this->_apiContext));
+        return $payment->execute($excecution, $this->_apiContext);
     }
 }

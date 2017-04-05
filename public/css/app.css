@@ -2,12 +2,20 @@
   margin-bottom: 0px;
 }
 
+.top-space {
+  margin-top: 1em;
+}
+
 .no-margin {
   margin: 0px;
 }
 
 .no-padding {
   padding: 0px;
+}
+
+.large-padding {
+  padding: 10px 15px;
 }
 
 .big-padding {
@@ -68,6 +76,22 @@
 .product .actions {
   right: 1em;
   top: 10px;
+}
+
+.sale-data {
+  padding: 1em;
+  text-align: center;
+  border-right: solid 1px #222;
+}
+
+.sale-data span {
+  display: block;
+  font-size: 2.2em;
+  color: #3f51b5;
+}
+
+.creado {
+  background-color: #d4e157;
 }
 
 /*# sourceMappingURL=app.css.map */

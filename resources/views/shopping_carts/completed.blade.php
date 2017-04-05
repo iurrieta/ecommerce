@@ -11,33 +11,33 @@
             <h3>Tu pago fue procesado <span class="{{ $order->status }}">{{ $order->status }}</span></h3>
             <p>Corrobora los detalles de tu envío:</p>
 
-            <div class="row">
+            <div class="row large-padding">
                 <div class="col-xs-6">Correo</div>
                 <div class="col-xs-6">{{ $order->email }}</div>
             </div>
 
-            <div class="row">
+            <div class="row large-padding">
                 <div class="col-xs-6">Dirección</div>
                 <div class="col-xs-6">{{ $order->address() }}</div>
             </div>
 
-            <div class="row">
+            <div class="row large-padding">
                 <div class="col-xs-6">Código Postal</div>
                 <div class="col-xs-6">{{ $order->postal_code }}</div>
             </div>
 
-            <div class="row">
+            <div class="row large-padding">
                 <div class="col-xs-6">Ciudad</div>
                 <div class="col-xs-6">{{ $order->city }}</div>
             </div>
 
-            <div class="row">
+            <div class="row large-padding">
                 <div class="col-xs-6">Estado y país</div>
                 <div class="col-xs-6">{{ "$order->state $order->country_code" }}</div>
             </div>
 
-            <div class="text-center">
-                <a href="#">Link permanente de tu compra</a>
+            <div class="text-center top-space">
+                <a href="{{ url('/compras/'. $shopping_cart->customid) }}">Link permanente de tu compra</a>
             </div>
         </div>
     </div>

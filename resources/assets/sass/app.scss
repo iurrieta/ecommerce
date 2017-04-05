@@ -5,12 +5,20 @@
   margin-bottom: 0px;
 }
 
+.top-space {
+  margin-top: 1em;
+}
+
 .no-margin {
   margin: 0px;
 }
 
 .no-padding {
   padding: 0px;
+}
+
+.large-padding {
+  padding: 10px 15px;
 }
 
 .big-padding {
@@ -71,3 +79,20 @@
     top: 10px;
   }
 }
+
+.sale-data {
+  padding: 1em;
+  text-align: center;
+  border-right: solid 1px #222;
+  span {
+    display: block;
+    font-size: 2.2em;
+    color: #3f51b5;
+  }
+}
+
+// Status order
+.creado {
+  background-color: #d4e157;
+}
+
