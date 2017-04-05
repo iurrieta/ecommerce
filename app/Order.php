@@ -2,7 +2,10 @@
 
 namespace App;
 
+use App\Mail\OrderCreated;
+use App\Mail\OrderUpdated;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Mail;
 
 class Order extends Model
 {
@@ -95,5 +98,31 @@ class Order extends Model
     public function address()
     {
         return "$this->line1 $this->line2";
+    }
+
+    public function shopping_cart()
+    {
+        return $this->belongsTo('App\ShoppingCart');
+    }
+
+    public function shoppingCartID()
+    {
+        return $this->shopping_cart->customid;
+    }
+
+    /**
+     * Send Email on create
+     */
+    public function sendMail()
+    {
+        Mail::to("ildemar.92@hotmail.com")->send(new OrderCreated($this));
+    }
+
+    /**
+     * Send email on update
+     */
+    public function sendUpdateMail()
+    {
+        Mail::to("ildemar.92@hotmail.com")->send(new OrderUpdated($this));
     }
 }

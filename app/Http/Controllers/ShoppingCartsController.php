@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use App\PayPal;
 use App\ShoppingCart;
 use Illuminate\Http\Request;
@@ -19,10 +20,10 @@ class ShoppingCartsController extends Controller
     public function index(Request $request)
     {
         $shopping_cart = $request->shopping_cart;
-        /*$paypal = new PayPal($shopping_cart);
+        $paypal = new PayPal($shopping_cart);
         $payment = $paypal->generate();
 
-        return redirect($payment->getApprovalLink());*/
+        return redirect($payment->getApprovalLink());
 
         $products = $shopping_cart->products()->get();
         $total = $shopping_cart->total();
