@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 class InShoppingCartsController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware("shoppingcart");
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -17,8 +22,7 @@ class InShoppingCartsController extends Controller
      */
     public function store(Request $request)
     {
-        $shopping_cart_id = \Session::get("shopping_cart_id");
-        $shopping_cart = ShoppingCart::findOrCreateBySessionID($shopping_cart_id);
+        $shopping_cart = $request->shopping_cart;
 
         $response = InShoppingCart::create([
             "shopping_cart_id" => $shopping_cart->id,

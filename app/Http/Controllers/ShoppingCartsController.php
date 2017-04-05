@@ -8,20 +8,26 @@ use Illuminate\Http\Request;
 
 class ShoppingCartsController extends Controller
 {
-    public function index()
+    /**
+     * ShoppingCartsController constructor.
+     */
+    public function __construct()
     {
-        $shopping_cart_id = \Session::get("shopping_cart_id");
-        $shopping_cart = ShoppingCart::findOrCreateBySessionID($shopping_cart_id);
+        $this->middleware("shoppingcart");
+    }
 
-        $paypal = new PayPal($shopping_cart);
+    public function index(Request $request)
+    {
+        $shopping_cart = $request->shopping_cart;
+        /*$paypal = new PayPal($shopping_cart);
         $payment = $paypal->generate();
 
-        return redirect($payment->getApprovalLink());
+        return redirect($payment->getApprovalLink());*/
 
-        /*$products = $shopping_cart->products()->get();
+        $products = $shopping_cart->products()->get();
         $total = $shopping_cart->total();
 
-        return view("shopping_carts.index", compact("products", "total"));*/
+        return view("shopping_carts.index", compact("products", "total"));
     }
 
     public function show($id)
