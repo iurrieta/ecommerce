@@ -94,4 +94,43 @@
   background-color: #d4e157;
 }
 
+.highlight {
+  -webkit-animation: highlight 1.5s;
+  animation: highlight 1.5s;
+}
+
+@-webkit-keyframes highlight {
+  50% {
+    background-color: #ffff00;
+    color: #000;
+  }
+  100% {
+    background-color: inherit;
+  }
+}
+
+@keyframes highlight {
+  50% {
+    background-color: #ffff00;
+    color: #000;
+  }
+  100% {
+    background-color: inherit;
+  }
+}
+
+.product-avatar {
+  max-width: 100%;
+}
+
+.products-container .product {
+  margin-top: 1em;
+}
+
+.circle-shopping-cart {
+  background-color: #232980;
+  border-radius: 50%;
+  padding: 1em;
+}
+
 /*# sourceMappingURL=app.css.map */

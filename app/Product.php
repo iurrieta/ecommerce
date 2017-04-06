@@ -17,4 +17,9 @@ class Product extends Model
                                 ->setQuantity(1)
                                 ->setPrice($this->pricing / 100);
     }
+
+    public function scopeLatest($query)
+    {
+        return $query->orderBy("id", "desc");
+    }
 }

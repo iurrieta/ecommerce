@@ -20,10 +20,6 @@ class ShoppingCartsController extends Controller
     public function index(Request $request)
     {
         $shopping_cart = $request->shopping_cart;
-        $paypal = new PayPal($shopping_cart);
-        $payment = $paypal->generate();
-
-        return redirect($payment->getApprovalLink());
 
         $products = $shopping_cart->products()->get();
         $total = $shopping_cart->total();
@@ -37,5 +33,15 @@ class ShoppingCartsController extends Controller
         $order = $shopping_cart->order();
 
         return view("shopping_carts.completed", ["shopping_cart" => $shopping_cart, "order" => $order]);
+    }
+
+    public function checkout(Request $request)
+    {
+        $shopping_cart = $request->shopping_cart;
+
+        $paypal = new PayPal($shopping_cart);
+        $payment = $paypal->generate();
+
+        return redirect($payment->getApprovalLink());
     }
 }
